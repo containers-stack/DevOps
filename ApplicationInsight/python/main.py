@@ -13,19 +13,22 @@ import time
 # Load environment variables from the .env file
 load_dotenv()
 
+
 # Configure Azure Monitor
 configure_azure_monitor(
     # Set logger_name to the name of the logger you want to capture logging telemetry with
-    logger_name="users-service-logger",
+    logger_name="demo-service-logger",
     resource=Resource.create({
-        "service.name": "live_metrics_service",
-        "service.instance.id": "qp_instance_id",
+        "service.name": "demo-service",
+        "service.instance.id": "123",
+        "service.env": "dev",
     }),
     enable_live_metrics=True,
 )
 
+
 # Logging calls with this logger will be tracked
-logger = getLogger("users-service-logger")
+logger = getLogger(__name__)
 logger.setLevel(INFO)
 
 tracer = trace.get_tracer(__name__)

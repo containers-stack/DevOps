@@ -1,1 +1,5 @@
 AzureFunction/main.zip
+ApplicationInsight/python/__pycache__*
+.vscode/*
+.vscode/launch.json
+ApplicationInsight/python/.env
