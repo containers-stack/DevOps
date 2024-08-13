@@ -3,3 +3,5 @@ ApplicationInsight/python/__pycache__*
 .vscode/*
 .vscode/launch.json
 ApplicationInsight/python/.env
+Cognitive-Services-Speech/.env
+Cognitive-Services-Speech/resoult.json

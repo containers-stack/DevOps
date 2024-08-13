@@ -1,31 +1,31 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# Copyright (c) Microsoft. All rights reserved.
-# Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
-
 import logging
 import sys
 import requests
 import time
 import swagger_client
+import dotenv
+import os
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
         format="%(asctime)s %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p %Z")
 
+
+# Load environment variables from .env file
+dotenv.load_dotenv()
+
 # Your subscription key and region for the speech service
-SUBSCRIPTION_KEY = "f3a71c75d600489eab8a76511bd423ba"
-SERVICE_REGION = "westus2"
+SUBSCRIPTION_KEY = os.getenv("SUBSCRIPTION_KEY")
+SERVICE_REGION = os.getenv("SERVICE_REGION")
 
 NAME = "Simple transcription"
 DESCRIPTION = "Simple transcription description"
 
-LOCALE = "he-IL"
-RECORDINGS_BLOB_URI = "<Your SAS Uri to an audio file>"
+LOCALE = os.getenv("LOCALE")
+RECORDINGS_BLOB_URI = os.getenv("RECORDINGS_BLOB_URI")
 
 # Provide the uri of a container with audio files for transcribing all of them
 # with a single request. At least 'read' and 'list' (rl) permissions are required.
-RECORDINGS_CONTAINER_URI = "<Your SAS Uri to a container of audio files>"
+RECORDINGS_CONTAINER_URI = os.getenv("RECORDINGS_CONTAINER_URI")
 
 # Set model information when doing transcription with custom models
 MODEL_REFERENCE = None  # guid of a custom model
@@ -144,11 +144,11 @@ def transcribe():
     # https://learn.microsoft.com/azure/cognitive-services/speech-service/batch-transcription-create?pivots=rest-api#request-configuration-options
     # for supported parameters.
     properties = swagger_client.TranscriptionProperties()
-    # properties.word_level_timestamps_enabled = True
-    # properties.display_form_word_level_timestamps_enabled = True
-    # properties.punctuation_mode = "DictatedAndAutomatic"
-    # properties.profanity_filter_mode = "Masked"
-    properties.destination_container_url = "<Your SAS Uri to a container>"
+    properties.word_level_timestamps_enabled = True
+    properties.display_form_word_level_timestamps_enabled = True
+    properties.punctuation_mode = "DictatedAndAutomatic"
+    properties.profanity_filter_mode = "Masked"
+    properties.destination_container_url = os.getenv("DESTINATION_CONTAINER_URL")
     # properties.time_to_live = "PT1H"
 
     # uncomment the following block to enable and configure speaker separation
