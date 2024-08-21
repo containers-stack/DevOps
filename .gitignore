@@ -5,3 +5,4 @@ ApplicationInsight/python/__pycache__*
 ApplicationInsight/python/.env
 Cognitive-Services-Speech/.env
 Cognitive-Services-Speech/resoult.json
+CSP/CostViewer/.env
