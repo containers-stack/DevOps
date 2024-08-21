@@ -1,6 +1,4 @@
-Here is a README file in markdown format for the script:
 
-```markdown
 # PowerShell Script: User Phone Number Comparison and Email Report
 
 This PowerShell script is designed to retrieve users from Microsoft Graph, compare their mobile phone numbers with their authentication phone numbers, and send a report via email using SendGrid. The script includes the following functionalities:
@@ -84,9 +82,3 @@ The script includes basic error handling to capture and display any issues encou
 - The script removes the `+972` country code prefix from phone numbers before comparison.
 - The script is currently set to compare phone numbers only for users with both a mobile and an authentication phone number. Users without one or both will be reported accordingly.
 
-## License
-
-This script is provided "as is" without any warranties. Use it at your own risk.
-```
-
-This README provides a comprehensive overview of the script, its functions, and how to configure and run it.
