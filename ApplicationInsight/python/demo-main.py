@@ -19,7 +19,7 @@ tracer = trace.get_tracer(__name__)
 i = 0
 while True:
     logger.setLevel("INFO")
-    logger.info("Uncorrelated info log", extra={"env_name": env_name})
+    logger.info("Uncorrelated info log", extra={"env_name": env_name, "service_name": "demo-main"})
     logger.warning("Uncorrelated warning log" , extra={"env_name": env_name})
     logger.error("Uncorrelated error log", extra={"env_name": env_name})
     
