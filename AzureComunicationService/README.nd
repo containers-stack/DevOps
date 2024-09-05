@@ -1,0 +1,36 @@
+# Azure Communication Services - Email Client Example
+
+This repository contains a Python script that demonstrates how to send an email using the Azure Communication Services Email SDK.
+
+## Prerequisites
+
+Before running this script, you need:
+
+- Python 3.x installed.
+- Azure Communication Services resource with Email capabilities.
+- The connection string for your Azure Communication Service.
+
+## Installation
+
+1. Clone this repository to your local machine.
+2. Install the required dependencies using pip:
+
+    ```bash
+    pip install azure-communication-email
+    ```
+
+3. Replace the `<AZURE_COMMUNICATION_SERVICE_CONNECTION_STRING>` in the script with your actual connection string from Azure Communication Services.
+
+## Usage
+
+1. Open the script `email_script.py` and modify the following sections:
+   - **senderAddress**: Update with your verified sender's email address.
+   - **recipients**: Add the recipient's email address in the `"address"` field.
+
+2. Run the script:
+
+    ```bash
+    python email_script.py
+    ```
+
+3. If the email is sent successfully, you will see no errors. In case of failure, the exception will be printed in the console.
