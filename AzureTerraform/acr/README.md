@@ -30,7 +30,7 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | (Required) Specifies the name of the Container Registry. Changing this forces a new resource to be created. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | (Required) The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created. | `string` | n/a | yes |
 | <a name="input_sku"></a> [sku](#input\_sku) | (Optional) The SKU name of the container registry. Possible values are Basic, Standard and Premium. Defaults to Basic | `string` | `"Standard"` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A mapping of tags to assign to the resource. | `map(any)` | <pre>{<br>  "app": "harmonya",<br>  "location": "israelcentral"<br>}</pre> | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A mapping of tags to assign to the resource. | `map(any)` | <pre>{<br>  "app": "demo",<br>  "location": "israelcentral"<br>}</pre> | no |
 
 ## Outputs
 

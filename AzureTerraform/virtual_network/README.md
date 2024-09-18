@@ -28,7 +28,7 @@ No modules.
 | <a name="input_location"></a> [location](#input\_location) | Location in which to deploy the network | `string` | `"israelcentral"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource Group name | `string` | n/a | yes |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | Subnets configuration | <pre>list(object({<br>    name                                           = string<br>    address_prefixes                               = list(string)<br>    enforce_private_link_endpoint_network_policies = bool<br>    enforce_private_link_service_network_policies  = bool<br>  }))</pre> | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Specifies the tags of the storage account | `map` | <pre>{<br>  "app": "harmonya",<br>  "location": "israelcentral"<br>}</pre> | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Specifies the tags of the storage account | `map` | <pre>{<br>  "app": "demo",<br>  "location": "israelcentral"<br>}</pre> | no |
 | <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | VNET name | `string` | n/a | yes |
 
 ## Outputs

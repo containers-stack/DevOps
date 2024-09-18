@@ -142,6 +142,13 @@ resource "azurerm_role_assignment" "aks_agic_integration" {
   principal_id         = azurerm_kubernetes_cluster.aks_cluster.ingress_application_gateway[0].ingress_application_gateway_identity[0].object_id
 }
 
+# TODELETE 
+resource "azurerm_role_assignment" "aks_admin_rbac" {
+  scope                = azurerm_kubernetes_cluster.aks_cluster.id
+  role_definition_name = "Azure Kubernetes Service RBAC Cluster Admin"
+  principal_id         = "1d51666a-29be-4db2-91a4-538c2d88960c"
+}
+
 resource "azurerm_monitor_diagnostic_setting" "settings" {
   name                       = "DiagnosticsSettings"
   target_resource_id         = azurerm_kubernetes_cluster.aks_cluster.id
