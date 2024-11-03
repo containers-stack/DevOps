@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot Usage Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GitHub Copilot Usage Dashboard</h1>
+        <div class="dashboard">
+            <div class="grid-container">
+                <div class="grid-item"><canvas id="chatChart"></canvas></div>
+                <div class="grid-item"><canvas id="codeAcceptanceChart"></canvas></div>
+                <div class="grid-item"><canvas id="chatCopyEventsChart"></canvas></div>
+                <div class="grid-item"><canvas id="chatInsertionEventsChart"></canvas></div>
+                <div class="grid-item"><canvas id="engagedUsersChart"></canvas></div>
+                <div class="grid-item"><canvas id="languageUsageChart"></canvas></div>
+                <div class="grid-item"><canvas id="totalActiveUsersChart"></canvas></div>
+                <div class="grid-item"><canvas id="totalCodeSuggestionsChart"></canvas></div>
+                <div class="grid-item"><canvas id="codeLinesAcceptedChart"></canvas></div>
+                <div class="grid-item"><canvas id="codeLinesSuggestedChart"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
