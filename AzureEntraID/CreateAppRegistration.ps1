@@ -90,10 +90,28 @@ $AppConfig | ConvertTo-Json | Out-File "./app-config.json"
 
 Write-Log "App registration created successfully, you can find the app configuration in the file ./app-config.json"
 
-# consent to the permissions
-$ConsentUrl = "https://portal.azure.com/?feature.msaljs=true#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/CallAnAPI/appId/$($App.AppId)/isMSAApp~/false"
+# Get access token
+$token = (Get-AzAccessToken).Token
 
-Write-Log "To consent the permissions, we need to open the Azure portal in a browser"
+$consentData = @{
+    clientAppId = $App.AppId
+    onBehalfOfAll = $true
+    checkOnly = $false
+    tags = @()
+    constrainToRra = $true
+    dynamicPermissions = @(
+        @{
+            appIdentifier = "00000003-0000-0000-c000-000000000000"
+            appRoles = @("User.ReadBasic.All", "Mail.ReadBasic.All", "Mail.Read", "Mail.ReadWrite")
+            scopes = @()
+        }
+    )
+}
 
-# open default browser with the consent url
-Start-Process $ConsentUrl
+$consentDataJson = $consentData | ConvertTo-Json -Depth 10
+
+$response = Invoke-RestMethod -Uri "https://graph.microsoft.com/beta/directory/consentToApp" -Method Post -Body $consentDataJson -ContentType "application/json" -Headers @{ Authorization = "Bearer $token" }
+
+Write-Log "Consent response: $($response | ConvertTo-Json -Depth 10)"
+
+Write-Log "App Registration Created !"
