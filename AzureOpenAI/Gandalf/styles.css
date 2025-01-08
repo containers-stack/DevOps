@@ -1,0 +1,86 @@
+body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: 'Harry P', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Harry P';
+    src: url('https://fonts.cdnfonts.com/s/17292/HarryP.ttf') format('truetype');
+}
+
+.game-container {
+    text-align: center;
+    background-color: #1f2833;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+#chat-box {
+    background-color: #0b0c10;
+    padding: 10px;
+    border-radius: 5px;
+    height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    color: #66fcf1;
+}
+
+input, button {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+input {
+    background-color: #c5c6c7;
+    color: #0b0c10;
+}
+
+button {
+    background-color: #45a29e;
+    color: #0b0c10;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #66fcf1;
+}
+
+#feedback {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+#level {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/* Background Animation */
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 2000px;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    animation: moveStars 60s linear infinite;
+    z-index: 0;
+    opacity: 0.5;
+}
