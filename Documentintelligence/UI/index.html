@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Document Intelligence</h1>
+        <form id="uploadForm">
+            <input type="file" id="fileInput" accept=".pdf" required>
+            <button type="submit">Analyze Document</button>
+        </form>
+        <div id="loading" class="hidden">Analyzing document, please wait...</div>
+        <div id="message"></div>
+        <div id="results"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
