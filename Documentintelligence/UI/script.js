@@ -5,6 +5,9 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
     const messageDiv = document.getElementById('message');
     const resultsDiv = document.getElementById('results');
     const submitButton = document.querySelector('button[type="submit"]');
+    const textContentDiv = document.getElementById('textContent');
+    const selectionMarksDiv = document.getElementById('selectionMarks');
+    const tablesDiv = document.getElementById('tables');
 
     if (fileInput.files.length === 0) {
         alert('Please select a file.');
@@ -18,6 +21,9 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
     submitButton.disabled = true;
     messageDiv.innerHTML = '';
     resultsDiv.innerHTML = '';
+    textContentDiv.innerHTML = '';
+    selectionMarksDiv.innerHTML = '';
+    tablesDiv.innerHTML = '';
 
     const formData = new FormData();
     formData.append('file', file);
@@ -45,7 +51,13 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
 
 function displayResults(result) {
     const resultsDiv = document.getElementById('results');
+    const textContentDiv = document.getElementById('textContent');
+    const selectionMarksDiv = document.getElementById('selectionMarks');
+    const tablesDiv = document.getElementById('tables');
     resultsDiv.innerHTML = '';
+    textContentDiv.innerHTML = '';
+    selectionMarksDiv.innerHTML = '';
+    tablesDiv.innerHTML = '';
 
     if (result.handwritten_content) {
         resultsDiv.innerHTML += '<p>Document contains handwritten content</p>';
@@ -54,54 +66,53 @@ function displayResults(result) {
     }
 
     result.pages.forEach(page => {
-        const pageDiv = document.createElement('div');
-        pageDiv.classList.add('result-section');
-        pageDiv.innerHTML = `<h2>טופס ${page.lines[0].text}</h2>`;
+        page.lines.forEach((line, lineIdx) => {
+            debugger
+            if(line.text === "מק״ט"){
+                debugger
+                console.log("found")
+            }
+            textContentDiv.innerHTML += `<p>${line.text}</p>`;
+        });
 
-        resultsDiv.appendChild(pageDiv);
+        page.selection_marks.forEach((mark, markIdx) => {
+            selectionMarksDiv.innerHTML += `<p>Selection mark #${markIdx + 1}: ${mark.state} (Confidence: ${mark.confidence})</p>`;
+        });
     });
 
     if (result.tables) {
-        result.tables.forEach(table => {
-            const tableDiv = document.createElement('div');
-            tableDiv.classList.add('result-section');
-            
+        result.tables.forEach((table, tableIdx) => {
+            tablesDiv.innerHTML += `<h3>Table ${tableIdx + 1}</h3>`;
             const tableElement = document.createElement('table');
             tableElement.style.width = '100%';
             tableElement.style.borderCollapse = 'collapse';
             tableElement.style.marginBottom = '20px';
 
-            try {
-                const tbody = document.createElement('tbody');
-                const maxColumns = Math.max(...table.cells.map(cell => cell.column_index));
-                table.cells.forEach(cell => {
-                    let row = tbody.rows[cell.row_index];
-                    if (!row) {
-                        row = tbody.insertRow(cell.row_index);
-                    }
-                    while (row.cells.length <= maxColumns) {
-                        row.insertCell();
-                    }
-                    const cellElement = row.cells[cell.column_index];
-                    cellElement.style.border = '1px solid #444';
-                    cellElement.style.padding = '8px';
+            const tbody = document.createElement('tbody');
+            const maxColumns = Math.max(...table.cells.map(cell => cell.column_index));
+            table.cells.forEach(cell => {
+                let row = tbody.rows[cell.row_index];
+                if (!row) {
+                    row = tbody.insertRow(cell.row_index);
+                }
+                while (row.cells.length <= maxColumns) {
+                    row.insertCell();
+                }
+                const cellElement = row.cells[cell.column_index];
+                cellElement.style.border = '1px solid #444';
+                cellElement.style.padding = '8px';
 
-                    if (cell.type === 'checkbox') {
-                        debugger
-                        cellElement.innerHTML = cell.content === 'selected' ? '<input type="checkbox" checked>' : '<input type="checkbox">';
-                    } else if (!cell.content) {
-                        cellElement.innerHTML = '<input type="text" placeholder="Enter value">';
-                    } else {
-                        cellElement.innerHTML = cell.content;
-                    }
-                });
+                if (cell.type === 'checkbox') {
+                    cellElement.innerHTML = cell.content === 'selected' ? '<input type="checkbox" checked>' : '<input type="checkbox">';
+                } else if (!cell.content) {
+                    cellElement.innerHTML = '<input type="text" placeholder="Enter value">';
+                } else {
+                    cellElement.innerHTML = cell.content;
+                }
+            });
 
-                tableElement.appendChild(tbody);
-                tableDiv.appendChild(tableElement);
-                resultsDiv.appendChild(tableDiv);
-            } catch (error) {
-                console.error('Error processing table cells:', error);
-            }
+            tableElement.appendChild(tbody);
+            tablesDiv.appendChild(tableElement);
         });
     }
 }
