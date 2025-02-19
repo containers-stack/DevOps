@@ -53,8 +53,8 @@ if st.button("Search") and query:
             {COLLECTION_SCHEMA}\n
             The db connection string is: {CONNECTION_STRING}\n
             please create a main.py file with the relevant code to search for the document in the collection based on the user's search query. 
-            Importent! do not include in your response ant explanation or instruction, only the code itself i want to save it locally and run it on my own pc.
-            Also, add in the end of the code function to save the result in a result.json file\n
+            Importent! do not include in your response any explanation or instruction like the one above, only the code.\n
+            Also, add in the end of the code function to save the result in a ./result.json file\n
             """,
             tools=code_interpreter.definitions,
             tool_resources=code_interpreter.resources,
