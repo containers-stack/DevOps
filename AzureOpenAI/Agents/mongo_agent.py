@@ -33,6 +33,7 @@ try:
 except Exception as e:
     st.write("Error: ", e)
 
+
 if st.button("Search") and query:
     try:
         st.spinner(text="In progress...")
@@ -146,6 +147,10 @@ if st.button("Search") and query:
             }
         ] 
 
+        with st.sidebar:
+            st.json(result)
+
+
         print("Created chat prompt")
         completion = client.chat.completions.create(  
             model=deployment,
@@ -162,6 +167,7 @@ if st.button("Search") and query:
         completion_result = completion.choices[0].message.content
 
         st.write(completion_result)
+
 
 
         
