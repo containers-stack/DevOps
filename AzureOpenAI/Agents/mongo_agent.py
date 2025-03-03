@@ -33,7 +33,6 @@ try:
 except Exception as e:
     st.write("Error: ", e)
 
-
 if st.button("Search") and query:
     try:
         st.spinner(text="In progress...")
@@ -167,9 +166,6 @@ if st.button("Search") and query:
         completion_result = completion.choices[0].message.content
 
         st.write(completion_result)
-
-
-
         
     except Exception as e:
         st.error(str(e))
