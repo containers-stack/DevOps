@@ -8,7 +8,7 @@ Cognitive-Services-Speech/resoult.json
 CSP/CostViewer/.env
 Documentintelligence/__pycache__/main.cpython-310.pyc
 GitHubCopilot/Extentions/node_modules/*
-AzureOpenAI/Agents/.env
+.env
 106AI/.DS_Store
 106AI/index.html
 106AI/logo.png
@@ -17,3 +17,5 @@ AzureOpenAI/Agents/.env
 106AI/admin/index.html
 106AI/admin/scripts.js
 106AI/admin/styles.css
+AI Echo/.env
+AI Echo/users.json

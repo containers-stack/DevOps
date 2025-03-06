@@ -1,0 +1,6 @@
+streamlit
+python-dotenv
+azure-data-tables
+azure-ai-projects
+azure-identity
+openai

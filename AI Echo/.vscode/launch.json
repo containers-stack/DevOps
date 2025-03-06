@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        
+        {
+            "name": "Python Debugger: FastAPI - Uvicorn",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "Documentintelligence.main:app",
+                "--reload"
+            ],
+            "jinja": true
+        },
+        {
+            "name": "Python:Streamlit",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "args": [
+                "run",
+                "${file}",
+                "--server.port",
+                "2000"
+            ]
+        }
+    ]
+}
