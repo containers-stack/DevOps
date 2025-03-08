@@ -2,6 +2,9 @@
 
 ![Image 1](./img/1.png)
 ![Image 2](./img/2.png)
+![Image 3](./img/3.png)
+![Image 4](./img/4.png)
+
 
 AI4Content is a content generation tool powered by Azure AI. This application allows users to generate professional content for blog posts, social media, emails, newsletters, and press releases based on the latest news from user-provided topics. The tool leverages Bing Search API to retrieve the most recent and relevant news articles and uses Azure AI to create engaging and polished content.
 
