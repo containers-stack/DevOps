@@ -30,8 +30,9 @@ cd <repository-directory>
 ### 2️⃣ Set Up Environment Variables:
 Create a `.env` file in the root directory and add:
 ```env
-PROJECT_CONNECTION_STRING=<your_project_connection_string>
-AZURE_STORAGE_CONNECTION_STRING=<your_azure_storage_connection_string>
+AZURE_STORAGE_CONNECTION_STRING="your_storage_connection_string"
+PROJECT_CONNECTION_STRING="your_project_connection_string"
+BING_CONNECTION_NAME="your_bing_connection_name"
 ```
 
 ### 3️⃣ Install Dependencies:
