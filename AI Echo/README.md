@@ -1,9 +1,11 @@
 # AI4Content
 
-<img src="./img/1.png" alt="Image 1" width="200"/>
-<img src="./img/2.png" alt="Image 2" width="200"/>
-<img src="./img/3.png" alt="Image 3" width="200"/>
-<img src="./img/4.png" alt="Image 4" width="200"/>
+<p align="center">
+    <img src="./img/1.png" alt="Image 1" width="500"/>
+    <img src="./img/2.png" alt="Image 2" width="500"/>
+    <img src="./img/3.png" alt="Image 3" width="500"/>
+    <img src="./img/4.png" alt="Image 4" width="500"/>
+</p>
 
 
 AI4Content is a content generation tool powered by Azure AI. This application allows users to generate professional content for blog posts, social media, emails, newsletters, and press releases based on the latest news from user-provided topics. The tool leverages Bing Search API to retrieve the most recent and relevant news articles and uses Azure AI to create engaging and polished content.
