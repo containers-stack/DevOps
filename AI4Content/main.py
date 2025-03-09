@@ -75,31 +75,65 @@ def generate_post(topic, description, language):
     # Initialize agent bing tool and add the connection id
     bing = BingGroundingTool(connection_id=conn_id)
 
+    instructions=""""
+                Generate a professional LinkedIn post in <REPLACE_LANGUGE> based on the latest news about a user-specified topic
+                You will get the latest news about the topic from Bing Search and generate a professional LinkedIn post in <REPLACE_LANGUGE> based on the news.
+                
+                # Examples
+
+                ### Input:  
+                - **Topic**: GitHub Advanced Security
+                - **Audience**: professionals and tech experts  
+                - **Tone**: professional  
+                - **Language**: Hebrew
+                                
+                🚀 עדכון מ-GitHub: שינויים ב-GitHub Advanced Security
+
+                🔒 החל מה-1 באפריל 2025, GitHub מפרידה את Advanced Security לשני מוצרים נפרדים, כדי להציע פתרונות ממוקדים יותר:
+
+                🔹 GitHub Secret Protection – סריקה לזיהוי ומניעת דליפות סודיות בזמן אמת.
+                🔹 GitHub Code Security – איתור ותיקון פגיעויות בקוד לפני שלב הייצור.
+
+                🔍 מה זה כולל?
+                הגנה מפני דליפות סודיות – זיהוי ומניעה לפני שהן הופכות לבעיה.
+                סריקות מבוססות AI – איתור אוטומטי עם מינימום אזעקות שווא.
+                התראות בזמן אמת – אפשרות להגיב מהר לכל חשיפה.
+                Copilot Autofix – תיקונים אוטומטיים לקוד ולבקשות שילוב.
+                💰 תמחור וגמישות בתשלום:
+
+                GitHub Secret Protection – 19$ לחודש למשתמש פעיל.
+                GitHub Code Security – 30$ לחודש למשתמש פעיל.
+                ניתן גם לרכוש דרך מודל חיוב מבוסס צריכה.
+                🔧 מה זה אומר עבורכם?
+                אם אתם משתמשים ב-GitHub Advanced Security, השינוי הזה יאפשר לכם לבחור בדיוק את ההגנות שאתם צריכים.
+
+                מה דעתכם על המהלך הזה? שתפו אותנו! 👇
+
+                #GitHubAdvancedSecurity #CyberSecurity #GitHub #CodeSecurity #SecretProtection #DevOps                
+                # Notes
+                    - Hook Them in the First Line
+                    Start with a bold statement, question, or surprising fact to grab attention. People scroll fast—make them stop!
+
+                    - Keep It Short & Structured
+                    Use short paragraphs, bullet points, or emojis (sparingly) to make your post easy to skim. Avoid big blocks of text.
+
+                    - Add Value, Not Just Noise
+                    Share insights, lessons, or actionable tips. Personal stories work well, but tie them to a professional takeaway.
+
+                    - Encourage Engagement
+                    End with a question or call to action (e.g., “Have you faced this challenge?”). Comments and shares boost visibility.
+
+                    - Use a Natural, Authentic Tone
+                    Write like you talk—don’t sound robotic. Professional doesn’t mean boring. If it feels forced, people will scroll past.
+            """.replace("<REPLACE_LANGUGE>", language)
+    
+    print(f"Instructions: {instructions}")
     # Create agent with the bing tool and process assistant run
     with project_client:
         agent = project_client.agents.create_agent(
             model="gpt-4",
             name="bing-agent",
-            instructions=
-            """"
-                Create a professional Content based on the latest news from a user-provided topic. Use Bing Search API to retrieve the most recent and relevant news articles.
-
-                # Steps
-
-                1. **Understand the topic**: The user will provide the topic name. Retrieve this topic from the input.
-                2. **Fetch the latest news**: 
-                    - Leverage Bing Search API to obtain the most recent, credible, and relevant news articles about the topic.
-                    - Ensure the news is from reputable sources and updated.
-                3. **Summarize the news**:
-                    - Write a concise overview of the news article. Focus on significance, insights, and key takeaways.
-                    - Use a polished and professional tone appropriate audiences.
-                4. **Structure the post**:
-                    - Start with a captivating line to grab the reader’s attention.
-                    - Summarize the news details and implications concisely.
-                    - Conclude with an engaging call-to-action (e.g., prompt the audience to share thoughts, discuss implications, or follow related trends).
-                
-                5. **Important Notes**: Make the post language in REPLACE_LANG and ensure it is professional and engaging.
-            """.replace("REPLACE_LANG", language),
+            instructions=instructions,
             tools=bing.definitions,
             headers={"x-ms-enable-preview": "true"}
         )
@@ -381,21 +415,21 @@ def main():
             name = st.text_input("Name", placeholder="Enter name of topic, for example: Azure AI, GitHub Copilot, Azure ARC, Fabric, etc.")
             audiance_option = st.selectbox(
                 "Select a the content Audiance",
-                ("Technical", "Marketing", "Sales", "HR", "Finance", "Legal")
+                ("Technical", "Marketing", "Sales")
             )
             creative_option = st.selectbox(
                 "Select a the content Creative",
-                ("Professional", "Casual", "Formal", "Informal", "Funny")
+                ("Professional", "Casual", "Formal", "Funny")
             )
 
             language_option = st.selectbox(
                 "Select a the content Language",
-                ("English", "Hebrew", "Arabic", "Spanish", "French")
+                ("English", "Hebrew")
             )
 
             content_type_option = st.selectbox(
                 "Select a the content Type",
-                ("Blog Post", "Social Media Post", "Email", "Newsletter", "Press Release")
+                ("LinkedIn Post","Newsletter")
             )
 
             col1, col2 = st.columns(2, gap="small")
