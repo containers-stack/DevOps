@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBTECH - Azure AI Workshop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li data-content="chat">Chat</li>
+            <li data-content="chat-data">Chat On Your Data</li>
+            <li data-content="voice">Voice</li>
+            <li data-content="dalle">Dalle</li>
+            <li data-content="ocr">OCR</li>
+            <li data-content="content-understanding">Content Understanding</li>
+            <li data-content="agent">Agent</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>UBTECH - Azure AI Workshop 🚀</h1>
+        <div id="chat-container" class="hidden">
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type your message...">
+                <button id="send-btn">Send ➤</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
