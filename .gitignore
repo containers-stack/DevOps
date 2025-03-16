@@ -20,3 +20,5 @@ GitHubCopilot/Extentions/node_modules/*
 AI Echo/.env
 AI Echo/users.json
 AI4Content/users.json
+AzureAIWorkshop/sln/*
+AzureAIWorkshop/loca_script.js
