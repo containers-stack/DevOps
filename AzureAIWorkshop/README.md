@@ -2,6 +2,8 @@
 
 Welcome to the Azure AI Workshop! This workshop is designed to help you explore the power of Azure AI services and learn how to build intelligent applications using pre-trained models and custom machine learning solutions.
 
+![Azure AI Workshop](./image.png)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
