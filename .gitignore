@@ -7,5 +7,6 @@ Cognitive-Services-Speech/.env
 Cognitive-Services-Speech/resoult.json
 CSP/CostViewer/.env
 Documentintelligence/__pycache__/main.cpython-310.pyc
-GitHubCopilot/Extentions/node_modules/*
-AzureOpenAI/Agents/.env
+AI4Content/.env
+AI4Content/users.json
+AzureAIWorkshop/loca_script.js

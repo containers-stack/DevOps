@@ -1,0 +1,289 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    background: linear-gradient(135deg, #121212, #1a1a2e);
+    color: #fff;
+    overflow: hidden;
+}
+
+.matrix-fall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.matrix-column {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2%;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    animation: fall linear infinite;
+    animation-duration: calc(10s + 10 * var(--i));
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.7);
+    z-index: 1;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 26px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    color: #00ffea;
+    font-weight: bold;
+}
+
+.sidebar ul li:hover, .sidebar ul li.active {
+    background-color: rgba(0, 255, 234, 0.2);
+    transform: translateX(0px);
+}
+
+.sidebar ul li.active {
+    background-color: rgba(0,255,234,0.3);
+    border-left: 4px solid #00ffea;
+    box-shadow: inset 4px 0 10px rgba(0,255,234,0.5);
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #121212;
+    color: #fff;
+    position: relative;
+    z-index: 0;
+}
+
+h1 {
+    padding: 20px;
+    margin: 0;
+    background: linear-gradient(90deg, #00ffea, #00bfff);
+    color: #121212;
+    text-shadow: 0 0 10px rgba(0,255,234,0.8);
+}
+
+#content-area {
+    padding: 15px 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    color: #00ffea;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* or any other height you prefer */
+    overflow: hidden;
+    padding-bottom: 70px; /* Adjust this value based on the height of the chat-input-container */
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow-y: auto;
+    margin-bottom: 70px; /* Adjust this value based on the height of the chat-input-container */
+}
+
+.chat-input-container {
+    display: flex;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    border-radius: 0 0 10px 10px;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 220px);
+    z-index: 1;
+    width: 80%;
+}
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+    margin-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.send-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(90deg, #00ffea, #00bfff);
+    color: #121212;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.send-btn:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+.message {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #00bfff, #00ffea);
+    color: #121212;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    box-shadow: 0 2px 8px rgba(0,255,234,0.3);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.user-message {
+    align-self: flex-end;
+    direction: rtl;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: linear-gradient(135deg, #ff7f50, #ff6347);
+    color: #fff;
+    direction: rtl;
+}
+
+.thinking {
+    background: linear-gradient(135deg, #ff7f50, #ff6347);
+    align-self: flex-start;
+    color: #fff;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.record-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(90deg, #00ffea, #00bfff);
+    color: #121212;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+.center {
+    margin: auto;
+    width: 30%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+.record-btn::before {
+    content: '🎙️';
+    margin-right: 8px;
+}
+
+.chat-effect {
+    display: inline-block;
+    animation: chatEffect 3s steps(30) 1;
+    white-space: pre-wrap;
+    color: #00ffea;
+    text-shadow: 0 0 3px rgba(0, 255, 234, 0.3);
+    position: relative;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes chatEffect {
+    from {
+        width: 0;
+        left: calc(var(--i) * 10%);
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+.spinner {
+    border: 4px solid rgba(0, 255, 234, 0.1);
+    border-left: 4px solid #00ffea;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.upload-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(90deg, #00ffea, #00bfff);
+    color: #121212;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.confirm-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(90deg, #73edac, #24dd93);
+    color: #121212;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+}
