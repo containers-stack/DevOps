@@ -106,6 +106,6 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 ## Contact
 
 For questions or support, please contact:
-- **Name**: Your Name
-- **Email**: your.email@example.com
-- **GitHub**: [Your GitHub Profile](https://github.com/your-profile)
+- **Name**: Moti Malka
+- **Email**: moti.malka25@gmail.com
+- **GitHub**: [Your GitHub Profile](https://github.com/moti-malka)
