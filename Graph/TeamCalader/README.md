@@ -18,16 +18,16 @@ The **Team Calendar Dashboard** is a Streamlit-based application that integrates
 ## Screenshots
 
 ### Team Availability Gauge
-![Team Availability Gauge](./images/team_availability_gauge.png)
+![Team Availability Gauge](./images/1.png)
 
 ### Individual Availability Over Time
-![Individual Availability Over Time](./images/individual_availability_line_chart.png)
+![Individual Availability Over Time](./images/2.png)
 
 ### Team Availability Distribution
-![Team Availability Distribution](./images/team_availability_pie_chart.png)
+![Team Availability Distribution](./images/3.png)
 
 ### Individual Events List
-![Individual Events List](./images/individual_events_list.png)
+![Individual Events List](./images/4.png)
 
 ---
 
