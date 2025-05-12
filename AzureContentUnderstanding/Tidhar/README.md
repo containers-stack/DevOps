@@ -2,6 +2,14 @@
 
 This project is a **Digital Apartment Inspection Form** designed for Tidhar's site supervisors. It allows users to input multiple image URLs, analyze them using Azure Content Understanding, and display the results dynamically.
 
+## Tags
+
+- **Azure Content Understanding**
+- **Digital Inspection**
+- **Image Analysis**
+- **Dynamic Forms**
+- **Hebrew Localization**
+
 ## Screenshots
 
 ### Form Interface
