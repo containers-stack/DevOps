@@ -1,0 +1,178 @@
+body {
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  background: linear-gradient(120deg, #00c6ff, #0078d7, #004434);
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  direction: rtl; /* Set Right-to-Left layout */
+}
+
+.container {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 500px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: right; /* Align text to the right */
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: right; /* Align text to the right */
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  background-color: rgb(0 68 52 / 1); /* Updated button color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+button:hover {
+  background-color: rgb(0 68 52 / 0.8); /* Slightly transparent on hover */
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  margin-top: 16px;
+}
+
+.issue {
+  margin-bottom: 16px;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.company-logo {
+  max-width: 150px;
+  height: auto;
+}
+
+#progress-bar-container {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+#progress-bar {
+  width: 0%;
+  height: 8px;
+  background-color: rgb(0 68 52 / 1);
+  animation: progressBarAnimation 2s linear infinite;
+}
+
+.config-form {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.config-form h2 {
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.config-form .form-group {
+  margin-bottom: 16px;
+}
+
+.config-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.config-form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: right;
+}
+
+.config-form button {
+  background-color: rgb(0 68 52 / 1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.config-form button:hover {
+  background-color: rgb(0 68 52 / 0.8);
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes progressBarAnimation {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}

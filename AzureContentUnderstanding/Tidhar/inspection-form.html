@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טופס בדיקת דירה דיגיטלי</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Add company logo -->
+    <div class="logo-container">
+      <img src="https://upload.wikimedia.org/wikipedia/he/thumb/7/7f/%D7%A1%D7%9E%D7%9C%D7%99%D7%9C_%D7%AA%D7%93%D7%94%D7%A8_2022.svg/1280px-%D7%A1%D7%9E%D7%9C%D7%99%D7%9C_%D7%AA%D7%93%D7%94%D7%A8_2022.svg.png" alt="לוגו תדהר" class="company-logo">
+    </div>
+
+    <h1>טופס בדיקת דירה</h1>
+
+    <!-- Add progress bar -->
+    <div id="progress-bar-container" style="display: none;">
+      <div id="progress-bar"></div>
+    </div>
+
+    <form id="inspection-form">
+      <!-- Project Selector -->
+      <div class="form-group">
+        <label for="project-select">בחר פרויקט</label>
+        <select id="project-select" required>
+          <option disabled selected>בחר פרויקט</option>
+          <option value="project1">מגדל תדהר א'</option>
+          <option value="project2">תדהר פארק מערב</option>
+        </select>
+      </div>
+
+      <!-- Apartment Number -->
+      <div class="form-group">
+        <label for="apartment-number">מספר דירה</label>
+        <input type="text" id="apartment-number" placeholder="הכנס מספר דירה" pattern="\d*" required>
+      </div>
+
+      <!-- Issue Reporting Section -->
+      <div id="issues-container">
+        <div class="issue">
+          <label>בעיה #1</label>
+          <!-- Replace file input with a text input for image URL -->
+          <input type="text" class="image-url-input" placeholder="הכנס כתובת URL של התמונה" required onchange="previewImageFromUrl(event)">
+          
+          <!-- Image preview -->
+          <div class="image-preview">
+            <img class="image-preview-img" src="" alt="תצוגה מקדימה של התמונה" style="display: none; max-width: 100%; margin-top: 8px;">
+          </div>
+        </div>
+      </div>
+      <!-- Add the missing hidden input -->
+      <input type="hidden" id="image-url" value="">
+
+      <!-- Button to add more images -->
+      <button type="button" id="add-image-button" class="submit-btn">+ הוסף תמונה</button>
+
+      <!-- Submit Button -->
+      <button type="button" id="analyze-button" class="submit-btn">שלח בדיקה</button>
+    </form>
+
+    <!-- Analysis Result Section - Added Section -->
+    <div id="analysis-result-container" style="display: none; margin-top: 16px;">
+      <h2>תוצאות הניתוח</h2>
+      <!-- Add image preview for analysis result -->
+      <div id="analysis-image-preview" style="text-align: center; margin-bottom: 16px;">
+        <img id="analysis-image" src="" alt="תמונה מנותחת" style="max-width: 100%; display: none;">
+      </div>
+      <ul id="analysis-result-list"></ul>
+    </div>
+  </div>
+
+  <!-- Configuration Form - Added Section -->
+  <div id="config-form-container" style="display: none; justify-content: center; align-items: center; min-height: 100vh; background-color: rgba(0, 0, 0, 0.5); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;">
+    <div class="config-form">
+      <h2>הגדרות חיבור ל-Azure</h2>
+      <form id="config-form">
+        <div class="form-group">
+          <label for="endpoint">כתובת Endpoint</label>
+          <input type="text" id="endpoint" placeholder="הכנס את כתובת ה-Endpoint" required>
+        </div>
+        <div class="form-group">
+          <label for="subscription-key">מפתח מנוי</label>
+          <input type="text" id="subscription-key" placeholder="הכנס את מפתח המנוי" required>
+        </div>
+        <div class="form-group">
+          <label for="analyzer-id">מזהה מנתח</label>
+          <input type="text" id="analyzer-id" placeholder="הכנס את מזהה המנתח" required>
+        </div>
+        <button type="button" id="save-config-button" class="submit-btn">שמור</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
