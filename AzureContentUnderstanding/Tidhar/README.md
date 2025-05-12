@@ -2,6 +2,15 @@
 
 This project is a **Digital Apartment Inspection Form** designed for Tidhar's site supervisors. It allows users to input multiple image URLs, analyze them using Azure Content Understanding, and display the results dynamically.
 
+## Screenshots
+
+### Form Interface
+![Form Interface](./image1.png)
+
+### Analysis Results
+![Analysis Results](./image2.png)
+
+
 ## Features
 
 - **Project Selection**: Choose a project from a dropdown list.
@@ -41,14 +50,6 @@ This project is a **Digital Apartment Inspection Form** designed for Tidhar's si
 2. Open `inspection-form.html` in a browser to use the form.
 
 3. Ensure you have an active Azure Content Understanding service with the correct endpoint and subscription key configured in `script.js`.
-
-## Screenshots
-
-### Form Interface
-![Form Interface](./image1.png)
-
-### Analysis Results
-![Analysis Results](./image2.png)
 
 ## Azure Integration
 
