@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-api-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fake-api-app
+  template:
+    metadata:
+      labels:
+        app: fake-api-app
+    spec:
+      containers:
+        - name: fake-api-container
+          image: nginx:1.25
+          ports:
+            - containerPort: 80
+          env:
+            - name: ENV
+              value: "production"
