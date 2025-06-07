@@ -10,13 +10,14 @@ spec:
   template:
     metadata:
       labels:
-        app: fake-api-app
+        app: fake-api-v2
     spec:
       containers:
-        - name: fake-api-container
-          image: nginx:1.25
-          ports:
-            - containerPort: 80
+        - name: broken-api-container
+          image: nginx:nonexistent
           env:
-            - name: ENV
+            - name: ENVV
               value: "production"
+          envFrom:
+            - configMapRef:
+                name: missing-config
