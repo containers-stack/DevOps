@@ -37,3 +37,5 @@ AzureOpenAI/chainlit/.chainlit/translations/nl-NL.json
 AzureOpenAI/chainlit/.chainlit/translations/ta.json
 AzureOpenAI/chainlit/.chainlit/translations/te.json
 AzureOpenAI/chainlit/.chainlit/translations/zh-CN.json
+AzureOpenAI/FunctionCall/bin/
+AzureOpenAI/FunctionCall/obj/
