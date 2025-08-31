@@ -12,7 +12,9 @@
         <ul>
             <li data-content="chat">Chat</li>
             <li data-content="rag">RAG</li>
-            <li data-content="dalle">Dalle</li>
+            <li data-content="function-calling">Function Calling</li>
+            <li data-content="predicted-outputs">Predicted Outputs</li>
+            <li data-content="vision">Vision</li>
             <li data-content="voice">Voice</li>
             <li data-content="ocr">OCR</li>
             <li data-content="content-understanding">Content Understanding</li>
@@ -60,6 +62,24 @@
             </pre>
         </div>
     </div>
-    <script src="script.js"></script>
+    <!-- Load configuration and utility functions first -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <!-- Load main application controller -->
+    <script src="js/main.js"></script>
+    
+    <!-- Load individual modules as needed for each challenge -->
+    <!-- Uncomment the modules you want to enable for students -->
+    
+    <script src="js/chat.js"></script>
+    <script src="js/rag.js"></script>
+    <script src="js/function-calling.js"></script>
+    <script src="js/predicted-outputs.js"></script>
+    <script src="js/vision-chat.js"></script>
+    <!-- <script src="js/dalle.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/ocr.js"></script>
+    <script src="js/content-understanding.js"></script>
+    <script src="js/agent.js"></script> -->
 </body>
 </html>

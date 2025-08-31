@@ -39,3 +39,4 @@ AzureOpenAI/chainlit/.chainlit/translations/te.json
 AzureOpenAI/chainlit/.chainlit/translations/zh-CN.json
 AzureOpenAI/FunctionCall/bin/
 AzureOpenAI/FunctionCall/obj/
+AzureAIWorkshop/js/config.local.js
