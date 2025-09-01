@@ -15,15 +15,21 @@ let ChatConversationHistory = [
 ];
 
 function initializeChat(chatMessages, chatInput, sendBtn, chatInputContainer) {
+    console.log('initializeChat called with:', {chatMessages, chatInput, sendBtn, chatInputContainer});
+    
     sendBtn.addEventListener('click', () => {
+        console.log('Send button clicked');
         handleChatMessage(chatMessages, chatInput);
     });
 
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
+            console.log('Enter key pressed');
             handleChatMessage(chatMessages, chatInput);
         }
     });
+    
+    console.log('Chat initialization complete');
 }
 
 function handleChatMessage(chatMessages, chatInput) {

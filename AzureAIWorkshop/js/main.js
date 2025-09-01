@@ -26,8 +26,8 @@ function initializeSidebar() {
             const chatContainer = createChatContainer();
             contentArea.appendChild(chatContainer);
 
-            // Initialize specific service based on selection
-            const serviceName = item.textContent.toLowerCase();
+            // Initialize specific service based on data-content attribute
+            const serviceName = item.getAttribute('data-content') || item.textContent.toLowerCase();
             initializeService(serviceName, chatContainer);
         });
     });
@@ -81,14 +81,14 @@ function initializeService(serviceName, chatContainer) {
                 showModuleNotLoaded('RAG', chatMessages);
             }
             break;
-        case 'function calling':
+        case 'function-calling':
             if (typeof initializeFunctionCall === 'function') {
                 initializeFunctionCall(chatMessages, chatInput, sendBtn, chatInputContainer);
             } else {
                 showModuleNotLoaded('Function Calling', chatMessages);
             }
             break;
-        case 'predicted outputs':
+        case 'predicted-outputs':
             if (typeof initializePredictedOutputs === 'function') {
                 initializePredictedOutputs(chatMessages, chatInput, sendBtn, chatInputContainer);
             } else {
@@ -123,7 +123,7 @@ function initializeService(serviceName, chatContainer) {
                 showModuleNotLoaded('OCR', chatMessages);
             }
             break;
-        case 'content understanding':
+        case 'content-understanding':
             if (typeof initializeContentUnderstanding === 'function') {
                 initializeContentUnderstanding(chatMessages, chatInput, sendBtn, chatInputContainer);
             } else {
