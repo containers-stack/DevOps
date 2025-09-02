@@ -237,6 +237,195 @@ Create sophisticated AI agents that combine multiple Azure AI services to assist
 
 ## 🚀 Getting Started
 
+## ☁️ Azure Prerequisites & Infrastructure Setup
+
+Before starting this workshop, you'll need to set up the following Azure resources and obtain the necessary credentials. This workshop integrates with multiple Azure AI services to provide a comprehensive learning experience.
+
+### 🔑 Required Azure Services
+
+#### 1. **Azure OpenAI Service** (Required for most modules)
+- **Purpose**: Powers chat, function calling, predicted outputs, vision, and agent modules
+- **Required Models**:
+  - `gpt-4o-mini` or `gpt-4` (for chat and function calling)
+  - `gpt-4-vision-preview` or `gpt-4o` (for vision module)
+  - `text-embedding-ada-002` (for RAG module)
+- **How to create**:
+  ```bash
+  # Create resource group
+  az group create --name rg-azure-ai-workshop --location eastus2
+  
+  # Create Azure OpenAI resource
+  az cognitiveservices account create \
+    --name your-openai-resource \
+    --resource-group rg-azure-ai-workshop \
+    --location eastus2 \
+    --kind OpenAI \
+    --sku S0
+  ```
+
+#### 2. **Azure AI Search** (Required for RAG module)
+- **Purpose**: Enables Retrieval-Augmented Generation (RAG) functionality
+- **Configuration**: Basic tier minimum, Standard recommended
+- **How to create**:
+  ```bash
+  az search service create \
+    --name your-search-service \
+    --resource-group rg-azure-ai-workshop \
+    --location eastus2 \
+    --sku Basic
+  ```
+
+#### 3. **Azure Speech Services** (Required for Voice module)
+- **Purpose**: Speech-to-text and text-to-speech capabilities  
+- **How to create**:
+  ```bash
+  az cognitiveservices account create \
+    --name your-speech-resource \
+    --resource-group rg-azure-ai-workshop \
+    --location eastus2 \
+    --kind SpeechServices \
+    --sku S0
+  ```
+
+#### 4. **Azure Document Intelligence** (Required for OCR module)
+- **Purpose**: Document analysis and OCR capabilities
+- **How to create**:
+  ```bash
+  az cognitiveservices account create \
+    --name your-document-intelligence \
+    --resource-group rg-azure-ai-workshop \
+    --location eastus2 \
+    --kind FormRecognizer \
+    --sku S0
+  ```
+
+#### 5. **Azure AI Foundry** (Required for Agent module)
+- **Purpose**: Advanced AI agent creation and management
+- **Prerequisites**: Azure OpenAI resource in the same region
+- **Setup**: Create through [Azure AI Studio](https://ai.azure.com/)
+
+### 📋 Required Information Checklist
+
+Before starting, gather the following information from your Azure resources:
+
+#### Azure OpenAI Configuration:
+- [ ] **Endpoint URL**: `https://your-openai-resource.openai.azure.com/`
+- [ ] **API Key**: Found in "Keys and Endpoint" section
+- [ ] **Deployment Names**: 
+  - Chat/Function Calling model (e.g., `gpt-4o-mini`)
+  - Vision model (e.g., `gpt-4-vision-preview`)  
+  - Embedding model (e.g., `text-embedding-ada-002`)
+- [ ] **API Version**: `2024-10-21` or latest
+
+#### Azure Search Configuration:
+- [ ] **Search Endpoint**: `https://your-search-service.search.windows.net`
+- [ ] **Admin Key**: Found in "Keys" section
+- [ ] **Index Name**: Create an index or use existing
+- [ ] **Semantic Configuration**: Set up semantic search configuration
+
+#### Azure Speech Configuration:
+- [ ] **Endpoint**: `https://your-region.api.cognitive.microsoft.com/`
+- [ ] **Subscription Key**: Found in "Keys and Endpoint" section
+- [ ] **Region**: Your Azure region (e.g., `eastus2`)
+
+#### Azure Document Intelligence Configuration:
+- [ ] **Endpoint**: `https://your-region.api.cognitive.microsoft.com/`
+- [ ] **Subscription Key**: Found in "Keys and Endpoint" section
+
+#### Azure AI Foundry Configuration:
+- [ ] **Endpoint**: `https://your-ai-service.services.ai.azure.com/api/projects/your-project-name`
+- [ ] **Access Token**: Get via `az account get-access-token --resource 'https://ai.azure.com'`
+- [ ] **API Version**: `2025-05-01` or latest
+
+### 💰 Cost Considerations
+
+**Estimated costs for running this workshop:**
+
+| Service | Tier | Estimated Cost/Hour | Notes |
+|---------|------|-------------------|--------|
+| Azure OpenAI | Standard | $0.10-$2.00 | Depends on model and usage |
+| Azure AI Search | Basic | $0.36 | Monthly fixed cost |
+| Speech Services | Standard | $0.15-$0.50 | Pay-per-transaction |
+| Document Intelligence | Standard | $0.10-$1.00 | Pay-per-page |
+| Azure AI Foundry | Consumption | $0.20-$1.00 | Based on agent usage |
+
+> 💡 **Cost Optimization Tips:**
+> - Use `gpt-4o-mini` instead of `gpt-4` for development
+> - Enable predicted outputs to reduce token usage
+> - Delete resources after completing the workshop
+> - Set up budget alerts in Azure Portal
+
+### 🔧 Quick Azure Setup Script
+
+Use this script to create all required resources at once:
+
+```bash
+#!/bin/bash
+
+# Variables
+RESOURCE_GROUP="rg-azure-ai-workshop"
+LOCATION="eastus2"
+OPENAI_NAME="openai-workshop-$(date +%s)"
+SEARCH_NAME="search-workshop-$(date +%s)"
+SPEECH_NAME="speech-workshop-$(date +%s)"
+DOC_INTEL_NAME="docintel-workshop-$(date +%s)"
+
+# Create resource group
+echo "Creating resource group..."
+az group create --name $RESOURCE_GROUP --location $LOCATION
+
+# Create Azure OpenAI
+echo "Creating Azure OpenAI resource..."
+az cognitiveservices account create \
+  --name $OPENAI_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --location $LOCATION \
+  --kind OpenAI \
+  --sku S0
+
+# Create Azure Search
+echo "Creating Azure Search service..."
+az search service create \
+  --name $SEARCH_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --location $LOCATION \
+  --sku Basic
+
+# Create Speech Services
+echo "Creating Speech Services..."
+az cognitiveservices account create \
+  --name $SPEECH_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --location $LOCATION \
+  --kind SpeechServices \
+  --sku S0
+
+# Create Document Intelligence
+echo "Creating Document Intelligence..."
+az cognitiveservices account create \
+  --name $DOC_INTEL_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --location $LOCATION \
+  --kind FormRecognizer \
+  --sku S0
+
+echo "Resources created successfully!"
+echo "Don't forget to:"
+echo "1. Deploy models in Azure OpenAI Studio"
+echo "2. Create search index in Azure Portal"
+echo "3. Configure Azure AI Foundry project"
+```
+
+### 🎯 Minimum Setup for Quick Start
+
+**If you want to try just a few modules, here's the minimum required:**
+
+- **Chat Module Only**: Azure OpenAI with GPT model deployment
+- **RAG Module**: Azure OpenAI + Azure AI Search with index
+- **Vision Module**: Azure OpenAI with GPT-4 Vision model
+- **Function Calling**: Azure OpenAI with GPT-4 or GPT-4o-mini
+- **Agent Module**: Azure AI Foundry project + Azure OpenAI
+
 ### Prerequisites
 - Basic knowledge of JavaScript and HTML
 - Azure subscription with OpenAI service access
